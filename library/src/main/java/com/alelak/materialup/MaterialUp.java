@@ -21,17 +21,34 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MaterialUp {
+    public enum SORT {
+        LATEST, POPULAR
+    }
+
     private static final String ENDPOINT = "https://www.materialup.com/";
 
-    public static void getPosts(final Context context, int page, final MaterialUpCallback materialUpCallback) {
+    /**
+     *
+     * @param context Activity Context.
+     * @param page  page number
+     * @param sort  sort by latest or popular
+     * @param materialUpCallback callback
+     */
+    public static void getPosts(final Context context, final int page, final SORT sort, final MaterialUpCallback materialUpCallback) {
         final OkHttpClient client = new OkHttpClient();
-        final Request request = new Request.Builder()
+        final Request.Builder builder = new Request.Builder()
                 .url(ENDPOINT + "posts?page=" + page)
-                .addHeader("Accept", "application/json")
-                .addHeader("user-agent", "Android")
-                .build();
+                .addHeader("Accept", "application/json");
+        switch (sort) {
+            case LATEST:
+                builder.url(ENDPOINT + "posts?page=" + page + "&sort=latest");
+                break;
+            case POPULAR:
+                builder.url(ENDPOINT + "posts?page=" + page + "&sort=popular");
+                break;
+        }
         final List<Post> posts = new ArrayList<>();
-        client.newCall(request).enqueue(new Callback() {
+        client.newCall(builder.build()).enqueue(new Callback() {
             Handler mainHandler = new Handler(context.getMainLooper());
 
             @Override

@@ -1,13 +1,13 @@
-MaterialUp Api Wrapper
+Material Up Api Wrapper
 ======================       
 
-Unofficial MaterialUp API Wrapper for Android.
+Unofficial Material Up API Wrapper for Android.
 
 <img src="screenshots/screenshot.png" width="400">
 
 ## Usage
 ```java
-MaterialUp.getPosts(this, page, new MaterialUpCallback() {
+MaterialUp.getPosts(context, page, MaterialUp.SORT.POPULAR, new MaterialUpCallback() {
     @Override
 	public void onSuccess(List <Post> posts, Response response) {
 		// do stuff with posts!
@@ -30,6 +30,6 @@ repositories {
 
 dependencies {
     // ... other dependencies here
-    compile'com.github.Alelak:materialup:1.0'
+    compile'com.github.Alelak:materialup:1.1.0'
 }
 ```

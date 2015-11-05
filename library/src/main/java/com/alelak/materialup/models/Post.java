@@ -1,22 +1,14 @@
 package com.alelak.materialup.models;
 
-import com.google.gson.annotations.SerializedName;
-
 import java.io.Serializable;
 
 public class Post implements Serializable {
 
-    @SerializedName("id")
     private int id;
-    @SerializedName("title")
     private String title;
-    @SerializedName("image_url")
     private String image_url;
-    @SerializedName("preview_url")
     private String preview_url;
-    @SerializedName("url")
     private String url;
-    @SerializedName("upvotes")
     private int upvotes;
 
     public int getId() {
@@ -66,5 +58,5 @@ public class Post implements Serializable {
     public void setPreview_url(String preview_url) {
         this.preview_url = preview_url;
     }
-    
+
 }
