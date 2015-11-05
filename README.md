@@ -7,9 +7,9 @@ Unofficial MaterialUp API Wrapper for Android.
 
 ## Usage
 ```java
-MaterialUp.getPosts(this, 1, new MaterialUpCallback() {
+MaterialUp.getPosts(this, page, new MaterialUpCallback() {
     @Override
-	public void onSuccess(List < Post > posts, Response response) {
+	public void onSuccess(List <Post> posts, Response response) {
 		// do stuff with posts!
 	}
 
