@@ -39,8 +39,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostViewHolder
         holder.title.setText(post.getTitle());
 
         DrawableRequestBuilder<String> request = Glide.with(context)
-                .load(post.getImage_url())
-                .centerCrop();
+                .load(post.getImage_url());
         if (post.getImage_url().endsWith(".gif")) {
             request.diskCacheStrategy(DiskCacheStrategy.SOURCE).into(holder.artwork);
         } else {

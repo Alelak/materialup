@@ -27,14 +27,12 @@ public class LatestPostsFragment extends Fragment {
     private View root;
 
     public LatestPostsFragment() {
-        // Required empty public constructor
     }
 
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         root = inflater.inflate(R.layout.fragment_posts, container, false);
         setupSwipeRefreshLayout();
         setupRecyclerView();
