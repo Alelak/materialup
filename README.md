@@ -1,12 +1,13 @@
 Material Up Api Wrapper
-======================       
+=======================       
 
 Unofficial Material Up API Wrapper for Android.
 
 <img src="screenshots/screenshot.png" width="400">
 
-## Usage
-### Get popular posts:
+Usage
+-----
+Get popular posts:
 ```java
 MaterialUp.getPosts(context, page, MaterialUp.SORT.POPULAR, new MaterialUpCallback() {
     @Override
@@ -21,7 +22,7 @@ MaterialUp.getPosts(context, page, MaterialUp.SORT.POPULAR, new MaterialUpCallba
 	}
 });
 ```
-### Get latest posts:
+Get latest posts:
 ```java
 MaterialUp.getPosts(context, page, MaterialUp.SORT.LATEST, new MaterialUpCallback() {
     @Override
@@ -36,9 +37,9 @@ MaterialUp.getPosts(context, page, MaterialUp.SORT.LATEST, new MaterialUpCallbac
 	}
 });
 ```
-## Download
+Download
+--------
 Gradle:
-
 ```gradle
 repositories {
     maven { url "https://jitpack.io" }
@@ -46,6 +47,6 @@ repositories {
 
 dependencies {
     // ... other dependencies here
-    compile'com.github.Alelak:materialup:1.1.0'
+    compile'com.github.Alelak:materialup:1.1.1'
 }
 ```
