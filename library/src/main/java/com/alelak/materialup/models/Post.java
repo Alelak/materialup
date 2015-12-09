@@ -4,12 +4,16 @@ import java.io.Serializable;
 
 public class Post implements Serializable {
 
+    private static final long serialVersionUID = 1104993515455179916L;
     private int id;
     private String title;
     private String image_url;
     private String preview_url;
     private String url;
     private int upvotes;
+
+    public Post() {
+    }
 
     public int getId() {
         return id;
@@ -59,4 +63,15 @@ public class Post implements Serializable {
         this.preview_url = preview_url;
     }
 
+    @Override
+    public String toString() {
+        return "Post{" +
+                "id=" + id +
+                ", title='" + title + '\'' +
+                ", image_url='" + image_url + '\'' +
+                ", preview_url='" + preview_url + '\'' +
+                ", url='" + url + '\'' +
+                ", upvotes=" + upvotes +
+                '}';
+    }
 }

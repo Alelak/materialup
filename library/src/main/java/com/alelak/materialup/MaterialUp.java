@@ -12,7 +12,6 @@ import com.squareup.okhttp.Request;
 import com.squareup.okhttp.Response;
 
 import org.jsoup.Jsoup;
-import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
@@ -26,29 +25,31 @@ public class MaterialUp {
     }
 
     private static final String ENDPOINT = "https://www.materialup.com/";
+    private static final OkHttpClient CLIENT = new OkHttpClient();
+    private static final Gson gson = new Gson();
 
     /**
-     *
-     * @param context Activity Context.
-     * @param page  page number
-     * @param sort  sort by latest or popular
+     * @param context            Activity Context.
+     * @param page               page number
+     * @param sort               sort by latest or popular
      * @param materialUpCallback callback
      */
     public static void getPosts(final Context context, final int page, final SORT sort, final MaterialUpCallback materialUpCallback) {
-        final OkHttpClient client = new OkHttpClient();
-        final Request.Builder builder = new Request.Builder()
-                .url(ENDPOINT + "posts?page=" + page)
-                .addHeader("Accept", "application/json");
+        String url = null;
         switch (sort) {
             case LATEST:
-                builder.url(ENDPOINT + "posts?page=" + page + "&sort=latest");
+                url = ENDPOINT + "posts?page=" + page + "&sort=latest";
                 break;
             case POPULAR:
-                builder.url(ENDPOINT + "posts?page=" + page + "&sort=popular");
+                url = ENDPOINT + "posts?page=" + page + "&sort=popular";
                 break;
         }
+        final Request request = new Request.Builder()
+                .url(url)
+                .addHeader("Accept", "application/json").build();
+
         final List<Post> posts = new ArrayList<>();
-        client.newCall(builder.build()).enqueue(new Callback() {
+        CLIENT.newCall(request).enqueue(new Callback() {
             Handler mainHandler = new Handler(context.getMainLooper());
 
             @Override
@@ -65,7 +66,6 @@ public class MaterialUp {
 
             @Override
             public void onResponse(final Response response) throws IOException {
-                final Gson gson = new Gson();
                 final MaterialUpResponse materialUpResponse = gson.fromJson(response.body().string(), MaterialUpResponse.class);
                 final Element document = Jsoup.parse(materialUpResponse.content);
                 final Elements elements = document.select(".post-list-items .post-list-item");
