@@ -9,7 +9,7 @@ Usage
 -----
 Get popular posts:
 ```java
-MaterialUp.getPosts(context, page, MaterialUp.SORT.POPULAR, new MaterialUpCallback() {
+MaterialUp.getPosts(page, MaterialUp.SORT.POPULAR, new MaterialUpCallback() {
     @Override
 	public void onSuccess(List <Post> posts, Response response) {
 		// do stuff with posts!
@@ -24,7 +24,7 @@ MaterialUp.getPosts(context, page, MaterialUp.SORT.POPULAR, new MaterialUpCallba
 ```
 Get latest posts:
 ```java
-MaterialUp.getPosts(context, page, MaterialUp.SORT.LATEST, new MaterialUpCallback() {
+MaterialUp.getPosts(page, MaterialUp.SORT.LATEST, new MaterialUpCallback() {
     @Override
 	public void onSuccess(List <Post> posts, Response response) {
 		// do stuff with posts!
@@ -47,6 +47,6 @@ repositories {
 
 dependencies {
     // ... other dependencies here
-    compile'com.github.Alelak:materialup:1.1.1'
+    compile'com.github.Alelak:materialup:1.1.2'
 }
 ```

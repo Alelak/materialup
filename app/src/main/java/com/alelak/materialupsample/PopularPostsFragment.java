@@ -11,7 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.alelak.materialup.MaterialUp;
-import com.alelak.materialup.MaterialUpCallback;
+import com.alelak.materialup.callbacks.MaterialUpCallback;
 import com.alelak.materialup.models.Post;
 import com.squareup.okhttp.Request;
 import com.squareup.okhttp.Response;
@@ -77,7 +77,7 @@ public class PopularPostsFragment extends Fragment {
 
 
     private void addContent(int page) {
-        MaterialUp.getPosts(getActivity(), page, MaterialUp.SORT.POPULAR, new MaterialUpCallback() {
+        MaterialUp.getPosts(page, MaterialUp.SORT.POPULAR, new MaterialUpCallback() {
             @Override
             public void onSuccess(List<Post> posts, Response response) {
                 for (Post post : posts) {
@@ -96,7 +96,7 @@ public class PopularPostsFragment extends Fragment {
     }
 
     private void getContent() {
-        MaterialUp.getPosts(getActivity(), 1, MaterialUp.SORT.POPULAR, new MaterialUpCallback() {
+        MaterialUp.getPosts(1, MaterialUp.SORT.POPULAR, new MaterialUpCallback() {
             @Override
             public void onSuccess(List<Post> posts, Response response) {
                 mPosts.clear();

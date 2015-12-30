@@ -1,4 +1,4 @@
-package com.alelak.materialup;
+package com.alelak.materialup.callbacks;
 
 import com.alelak.materialup.models.Post;
 import com.squareup.okhttp.Request;
