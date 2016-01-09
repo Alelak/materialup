@@ -7,10 +7,6 @@ import com.alelak.materialup.callbacks.MaterialUpCallback;
 import com.alelak.materialup.models.MaterialUpResponse;
 import com.alelak.materialup.models.Post;
 import com.google.gson.Gson;
-import com.squareup.okhttp.Callback;
-import com.squareup.okhttp.OkHttpClient;
-import com.squareup.okhttp.Request;
-import com.squareup.okhttp.Response;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Element;
@@ -19,6 +15,11 @@ import org.jsoup.select.Elements;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+
+import okhttp3.Callback;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
 
 public class MaterialUp {
     public enum SORT {
@@ -66,7 +67,7 @@ public class MaterialUp {
 
             @Override
             public void onResponse(final Response response) throws IOException {
-                final MaterialUpResponse materialUpResponse = GSON.fromJson(response.body().string(), MaterialUpResponse.class);
+                final MaterialUpResponse materialUpResponse = GSON.fromJson(response.body().charStream(), MaterialUpResponse.class);
                 final Element document = Jsoup.parse(materialUpResponse.content);
                 final Elements elements = document.select(".post-list-items .post-list-item");
                 for (Element element : elements) {

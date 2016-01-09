@@ -47,6 +47,6 @@ repositories {
 
 dependencies {
     // ... other dependencies here
-    compile'com.github.Alelak:materialup:1.1.2'
+    compile'com.github.Alelak:materialup:1.1.3'
 }
 ```
