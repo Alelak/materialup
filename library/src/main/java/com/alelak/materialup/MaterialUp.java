@@ -26,8 +26,8 @@ public class MaterialUp {
         LATEST, POPULAR
     }
 
-    private static final String ENDPOINT = "https://www.materialup.com/";
-    private static final String ENDPOINT_ = "https://www.materialup.com";
+    private static final String ENDPOINT = "https://material.uplabs.com/";
+    private static final String ENDPOINT_ = "https://material.uplabs.com";
     private static final OkHttpClient CLIENT = new OkHttpClient();
     private static final Gson GSON = new Gson();
 
@@ -73,8 +73,8 @@ public class MaterialUp {
                 for (Element element : elements) {
                     Post post = new Post();
                     post.setId(Integer.parseInt(element.attr("id")));
-                    post.setTitle(element.select("h2").first().text());
-                    post.setUrl(ENDPOINT_ + element.select("a").first().attr("href"));
+                    post.setTitle(element.select(".card__title").first().text());
+                    post.setUrl(ENDPOINT_ + element.attr("path"));
                     post.setPreview_url(element.select("img[alt=\"Teaser\"]").attr("src"));
                     post.setImage_url(element.select("img.preview").first().attr("src"));
                     post.setUpvotes(Integer.parseInt(element.select(".count").first().text()));
